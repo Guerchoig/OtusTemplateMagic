@@ -1,5 +1,5 @@
-// Realises a universal print_ip function, 
-// which interprets integers, vectors, lists, strings and tuples 
+// Realises a universal print_ip function,
+// which interprets integers, vectors, lists, strings and tuples
 // as sequences of dot-separated groups, while cout-ing them
 #pragma once
 #include <type_traits>
@@ -11,7 +11,8 @@
 #include <initializer_list>
 #include <tuple>
 
-// Types to tell a string argument
+/// @brief Types to tell a string argument
+/// @tparam T
 template <typename T>
 struct is_string : std::false_type
 {
@@ -42,7 +43,7 @@ struct is_container<T, void_t<typename T::iterator>> : std::true_type
 template <typename T>
 bool constexpr is_container_v = is_container<T>::value;
 
-// Handy types for use in print_ip SFINAE templates  
+// Handy types for use in print_ip SFINAE templates
 template <typename T>
 using IsIntegral = std::enable_if_t<std::is_integral_v<T>, bool>;
 
@@ -58,7 +59,7 @@ using IsString = std::enable_if_t<is_string_v<T>, bool>;
 template <typename T>
 using IsTuple = std::tuple_element_t<0, T>;
 
-// The print_ip SFINAE templates 
+// The print_ip SFINAE templates
 
 // For any integrals
 template <typename T, IsIntegral<T> = true>
