@@ -89,13 +89,16 @@ void print_ip(const T &str)
 }
 
 // For tuples (https://www.cppstories.com/2022/tuple-iteration-basics/)
+// + mono-typed tuple
 template <typename T, IsTuple<T> = true>
 void print_ip(const T &tp)
 {
     std::apply(
         [](const auto &first, const auto &...restArgs)
         {
-            auto printElem = [](const auto &el)
+            // The IsTuple<T> type of argument guarantees,
+            // that all the tuple members are same type
+            auto printElem = [](const IsTuple<T> &el)
             {
                 std::cout << "." << el;
             };
