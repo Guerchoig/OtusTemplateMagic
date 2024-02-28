@@ -1,4 +1,4 @@
-// Realises a universal print_ip function,
+//  Realises a universal print_ip function,
 // which interprets integers, vectors, lists, strings and tuples
 // as sequences of dot-separated groups, while cout-ing them
 #pragma once
