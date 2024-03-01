@@ -1,6 +1,10 @@
-//  Realises a universal print_ip function,
-// which interprets integers, vectors, lists, strings and tuples
-// as sequences of dot-separated groups, while cout-ing them
+/// @brief This header-only library realises a universal print_ip function,
+/// which outputs integers, vectors, lists, strings and tuples
+/// as IP-like sequences of dot-separated groups
+/// @file print_ip.h
+/// @author alex-guerchoig
+/// @date 2024 March 1
+
 #pragma once
 #include <type_traits>
 #include <iostream>
@@ -11,8 +15,7 @@
 #include <initializer_list>
 #include <tuple>
 
-/// @brief Types to tell a string argument
-/// @tparam T
+/// @brief Types to SFINAE-tell a string argument from other types
 template <typename T>
 struct is_string : std::false_type
 {
@@ -26,7 +29,7 @@ struct is_string<std::string> : std::true_type
 template <typename T>
 bool constexpr is_string_v = is_string<T>::value;
 
-// Types to tell a container argument, include strings
+/// @brief Types to tell a container type, include strings
 template <typename...>
 using void_t = void;
 
@@ -43,7 +46,7 @@ struct is_container<T, void_t<typename T::iterator>> : std::true_type
 template <typename T>
 bool constexpr is_container_v = is_container<T>::value;
 
-// Handy types for use in print_ip SFINAE templates
+/// @brief Handy types for use in print_ip SFINAE templates
 template <typename T>
 using IsIntegral = std::enable_if_t<std::is_integral_v<T>, bool>;
 
@@ -59,9 +62,9 @@ using IsString = std::enable_if_t<is_string_v<T>, bool>;
 template <typename T>
 using IsTuple = std::tuple_element_t<0, T>;
 
-// The print_ip SFINAE templates
+/// @brief The print_ip SFINAE templates
 
-// For any integrals
+/// @brief For any integrals
 template <typename T, IsIntegral<T> = true>
 void print_ip(T &&num)
 {
@@ -72,7 +75,7 @@ void print_ip(T &&num)
     }
 }
 
-// For containers, except strings
+/// @brief For containers, except strings
 template <typename T, IsContainer<T> = true, NotIsString<T> = true>
 void print_ip(const T &cont)
 {
@@ -81,14 +84,14 @@ void print_ip(const T &cont)
         std::cout << *n << (i == cont.size() ? "\n" : ".");
 }
 
-// For strings
+/// @brief For strings
 template <typename T, IsString<T> = true>
 void print_ip(const T &str)
 {
     std::cout << str << "\n";
 }
 
-// For tuples (https://www.cppstories.com/2022/tuple-iteration-basics/)
+/// @brief For tuples (https://www.cppstories.com/2022/tuple-iteration-basics/)
 // + mono-typed tuple
 template <typename T, IsTuple<T> = true>
 void print_ip(const T &tp)
