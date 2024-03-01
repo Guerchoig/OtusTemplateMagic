@@ -5,10 +5,7 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(print_ip VERSION ${PROJECT_VESRION})
 
-# configure_file(version.h.in version.h)
-
 add_executable(print_ip print_ip.cpp)
-
 
 set_target_properties( print_ip PROPERTIES
     CXX_STANDARD 17

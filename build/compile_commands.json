@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/sasha/source/OtusCC/OtusTemplateMagic/build",
-  "command": "/usr/bin/g++  -I/home/sasha/source/OtusCC/OtusTemplateMagic/build -I/home/sasha/source/OtusCC/OtusTemplateMagic -g -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/print_ip.dir/print_ip.cpp.o -c /home/sasha/source/OtusCC/OtusTemplateMagic/print_ip.cpp",
+  "command": "/usr/bin/g++  -I/home/sasha/source/OtusCC/OtusTemplateMagic/build -I/home/sasha/source/OtusCC/OtusTemplateMagic -O3 -DNDEBUG -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/print_ip.dir/print_ip.cpp.o -c /home/sasha/source/OtusCC/OtusTemplateMagic/print_ip.cpp",
   "file": "/home/sasha/source/OtusCC/OtusTemplateMagic/print_ip.cpp"
 }
 ]
