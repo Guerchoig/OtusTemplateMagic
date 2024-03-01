@@ -15,7 +15,7 @@
 #include <initializer_list>
 #include <tuple>
 
-/// @brief Types to SFINAE-tell a string argument from other types
+/// @brief Types to SFINAE-tell a string argument from other types _
 template <typename T>
 struct is_string : std::false_type
 {
