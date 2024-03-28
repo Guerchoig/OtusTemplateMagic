@@ -1,1 +1,0 @@
-/usr/bin/g++ -O3 -DNDEBUG CMakeFiles/print_ip.dir/print_ip.cpp.o -o print_ip 

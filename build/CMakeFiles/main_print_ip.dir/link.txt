@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/main_print_ip.dir/main_print_ip.cpp.o -o main_print_ip 
